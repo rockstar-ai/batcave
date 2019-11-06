@@ -8,8 +8,8 @@ for char in welcome:
     sys.stdout.write(char)
     time.sleep(0.2)
 con = snowflake.connector.connect(
-  user='sakthib',
-  password='Krithikutty43',
+  user='*******',
+  password='*************',
   account=domain+'.east-us-2.azure',
   warehouse='SF_TRYOUTS_WH',
   database='SF_TRYOUTS',
