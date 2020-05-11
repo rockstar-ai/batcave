@@ -1,0 +1,14 @@
+source code for chatbot nltk: https://data-flair.training/blogs/python-chatbot-project/
+nltk documentation: https://www.nltk.org/api/nltk.parse.html?highlight=enumerate
+keras documentation: https://keras.io/api/models/model/
+keras general documentation: https://keras.io/guides/functional_api/
+What are keras tensors: https://medium.com/@ecaradec/understanding-keras-tensors-d405a63e069e
+tensforflow documentation: https://www.tensorflow.org/guide/tensor
+tf placeholders: https://www.tensorflow.org/api_docs/python/tf/keras/backend/placeholder
+mu,py.ones documentation: https://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html
+tf.backend documenation: https://www.tensorflow.org/api_docs/python/tf/keras/backend/function
+pickle examples: https://www.journaldev.com/15638/python-pickle-example
+enumerate function in python: https://www.geeksforgeeks.org/enumerate-in-python/
+model.predict in keras: https://machinelearningmastery.com/how-to-make-classification-and-regression-predictions-for-deep-learning-models-in-keras/
+nlp scoring in nltk: https://gist.github.com/fabianobizarro/648165d1a507b440506120b5b52dc340
+source code for chatbot nltk - git: https://github.com/jerrytigerxu/Simple-Python-Chatbot/blob/master/chatgui.py
