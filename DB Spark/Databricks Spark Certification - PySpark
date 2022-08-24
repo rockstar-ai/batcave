@@ -1,0 +1,70 @@
+Loading a file into a dataframe:
+
+From free form data:
+arrayData = [
+        ('James',['Java','Scala'],{'hair':'black','eye':'brown'}),
+        ('Michael',['Spark','Java',None],{'hair':'brown','eye':None}),
+        ('Robert',['CSharp',''],{'hair':'red','eye':''}),
+        ('Washington',None,None),
+        ('Jefferson',['1','2'],{})]
+  
+sampledf = spark.createDataFrame(data=arrayData, schema = ['name','knownLanguages','properties'])
+
+CSV:
+testdf = spark.read.csv('/FileStore/tables/dcad_data/people.csv',header=True)
+testdf = spark.read.format("csv").load('/FileStore/tables/dcad_data/people.csv',header=True)
+--Using format as a function parameter for load function
+testdf = spark.read.load('/FileStore/tables/dcad_data/people.csv',format='csv',multiLine=True)
+
+JSON:
+testdf = spark.read.json('/FileStore/tables/dcad_data/people.csv',multiLine=True)
+--Using format function outside
+testdf = spark.read.format("json").load('/FileStore/tables/dcad_data/people.csv',multiLine=True)
+--Using format as a function parameter for load function
+testdf = spark.read.load('/FileStore/tables/dcad_data/menu.json',format='json',multiLine=True)
+
+Other File Formats: Parquet (default), Orc
+
+Class.pyspark.sql.DataFrameReader
+
+Parquet:
+df = spark.read.parquet('python/test_support/sql/parquet_partitioned')
+Parameters: mergeSchema, pathGlobFilter, recursiveFileLookup
+
+Class.pyspark.sql.DataFrameWriter
+
+Orc:
+orc_df = spark.read.orc('python/test_support/sql/orc_partitioned')
+Parameters: path, mode (specifies what to do if the data already exists), partitionBy, compression
+Mode values: append, overwrite, ignore, error, errorifexists (default)
+
+
+To run an entire notebook:
+
+%run <notebook directory>
+
+Example: 
+Notebook name: Create_dataframes
+Command: %run ./Create_dataframes
+
+Selecting columns from a dataframe:
+
+Code: peopledf.select(col("name"),"age",peopledf.gender).show()
+Code: menudf.select("name","batters.batter.type").show()
+
+Special functions: 
+1.explode, explode_outer (if array or map is null or empty, function returns null), posexplode, posexplode_outer (if array or map is null or empty, function returns null)
+
+Notes: data= [('James',['Java','Scala'],{'age':'24','marital_status':'single'}),
+			 ('Amy',['Java','Python','C#'],{'age':'26','marital_status':'married'})
+			]
+
+Code: df2 = sampledf.select(sampledf.name,explode(sampledf.knownLanguages))
+Code: df3 = sampledf.select(sampledf.name,explode_outer(sampledf.knownLanguages))
+
+2.pivot, first
+
+Code: display(df3.groupby("name").pivot("key").agg(first("value")))
+
+
+
